@@ -6,35 +6,36 @@ Este repositorio contiene la implementación de los algoritmos criptográficos u
 
 El repositorio se organiza en dos componentes principales: los módulos de Python (`.py`), que implementan las operaciones criptográficas y los procedimientos experimentales, y la carpeta `Tablas`, que contiene los archivos con los resultados generados durante los experimentos.
 
-### 1. Tablas de resultados
+## 1. Tablas de resultados
 
-Todos los archivos de resultados se encuentran en la carpeta `Tablas/`. Se incluyen los datos de los benchmarks, los ratios de rendimiento y los análisis comparativos de las curvas elípticas.
+El repositorio incluye las tablas con los resultados de los benchmarks, los ratios de rendimiento y los análisis comparativos entre curvas elípticas en forma de Edwards y Weierstrass. Debido al tamaño de algunos archivos, las tablas se encuentran en el directorio principal del repositorio y no dentro de una carpeta independiente.
 
-#### 1.1. Tablas de benchmarks y ratios
+### 1.1. Tablas de benchmarks y ratios
 
-Los experimentos se realizaron considerando tres cantidades de repeticiones: 10, 100 y 500. Para cada escenario se incluye una tabla con los tiempos de ejecución y otra con los ratios de rendimiento correspondientes al cifrado, descifrado y tiempo total.
+Los experimentos se realizaron considerando tres cantidades de repeticiones: 10, 100 y 500. Para cada escenario se incluyen los resultados de los tiempos de ejecución y sus correspondientes ratios de cifrado, descifrado y tiempo total.
 
 - **10 experimentos**
-  - `SigncryptionBenchmarks.xlsx`: resultados de los tiempos de ejecución correspondientes a 10 experimentos.
-  - `tabla_ratios.xlsx`: ratios de cifrado, descifrado y tiempo total calculados a partir de los resultados anteriores.
+  - `SigncryptionBenchmarks.xlsx`: resultados de los tiempos de ejecución.
+  - `tabla_ratios.xlsx`: ratios de cifrado, descifrado y tiempo total.
 
 - **100 experimentos**
-  - `SigncryptionBenchmarks100.xlsx`: resultados de los tiempos de ejecución correspondientes a 100 experimentos.
-  - `tabla_ratios100.xlsx`: ratios de cifrado, descifrado y tiempo total correspondientes a este escenario.
+  - `SigncryptionBenchmarks100.xlsx`: resultados de los tiempos de ejecución.
+  - `tabla_ratios100.xlsx`: ratios correspondientes a este escenario.
 
 - **500 experimentos**
-  - `SigncryptionBenchmarks500.xlsx`: resultados de los tiempos de ejecución correspondientes a 500 experimentos.
-  - `tabla_ratios500.xlsx`: ratios de cifrado, descifrado y tiempo total correspondientes a este escenario.
+  - `SigncryptionBenchmarks500`: archivo comprimido con WinRAR y almacenado en formato binario para reducir el tamaño del archivo y facilitar su publicación en el repositorio.
+  - `tabla_ratios500.xlsx`: ratios correspondientes a este escenario.
 
-#### 1.2. Análisis comparativo de curvas elípticas
+**Nota sobre los archivos de 500 experimentos:** debido al tamaño de los resultados, el archivo correspondiente al benchmark de 500 experimentos se encuentra comprimido y almacenado en formato binario. Para consultar los datos originales, es necesario descargar el archivo y extraerlo o convertirlo al formato correspondiente, según el tipo de archivo incluido en el paquete. Esta consideración debe tenerse en cuenta al revisar o reproducir los resultados.
 
-También se incluyen dos archivos con el análisis de los índices \(r_G\) para las curvas de Edwards y Weierstrass:
+### 1.2. Análisis comparativo de curvas elípticas
 
-- `AnalisisVictoriasEdwards.xlsx`: contiene los resultados de los casos en los que el índice \(r_G\) de Edwards es mayor que el de Weierstrass, de acuerdo con el criterio utilizado en el análisis.
-- `AnalisisDerrotasEdwards.xlsx`: contiene los resultados de los casos en los que el índice \(r_G\) de Edwards es menor que el de Weierstrass.
+Se incluyen dos archivos con los índices \(r_G\) calculados para comparar las curvas de Edwards y Weierstrass:
 
-Estos archivos permiten examinar y comparar los índices calculados para las curvas consideradas en el estudio.
+- `AnalisisVictoriasEdwards.xlsx`: resultados de los casos clasificados como victorias de Edwards según el criterio de comparación utilizado.
+- `AnalisisDerrotasEdwards.xlsx`: resultados de los casos clasificados como derrotas de Edwards según dicho criterio.
 
+Estos archivos permiten examinar los resultados del análisis comparativo presentado en la tesis.
 ### 2. Módulos de Python
 
 Los siguientes archivos `.py` contienen las implementaciones de los algoritmos criptográficos y los procedimientos utilizados en los experimentos.
