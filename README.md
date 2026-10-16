@@ -1,27 +1,89 @@
-# Implementacion-y-evaluacion-del-rendimiento-de-un-esquema-de-signcryption-Tablas-
-Este repositorio contiene los resultados, análisis y tablas generados a partir de las pruebas de rendimiento (*benchmarks*) realizadas sobre el esquema de Signcryption.
+# Implementación y evaluación del rendimiento de un esquema de signcryption
 
-## Contenido del Repositorio
+Este repositorio contiene la implementación de los algoritmos criptográficos utilizados en la tesis, el código empleado para realizar los experimentos computacionales (*benchmarks*) y las tablas de resultados y análisis comparativos entre curvas elípticas en forma de Edwards y Weierstrass.
 
-El proyecto se divide principalmente en dos conjuntos de datos: las tablas de rendimiento bruto (*benchmarks*) junto con sus respectivos ratios de tiempo, y un análisis comparativo detallado entre curvas (Edwards vs. Weierstrass).
+## Contenido del repositorio
 
-### 1. Tablas de Benchmarks y Ratios
+El repositorio se organiza en dos componentes principales: los módulos de Python (`.py`), que implementan las operaciones criptográficas y los procedimientos experimentales, y la carpeta `Tablas`, que contiene los archivos con los resultados generados durante los experimentos.
 
-Los experimentos se ejecutaron bajo tres escenarios diferentes según el número de repeticiones (10, 100 y 500 experimentos). Cada escenario cuenta con su tabla de tiempos brutos y su correspondiente tabla de ratios de rendimiento (cifrado, descifrado y tiempo total):
+### 1. Tablas de resultados
 
-*   **10 Experimentos:**
-    *   `SigncryptionBenchmarks`: Tabla con las métricas del benchmark inicial de 10 experimentos.
-    *   `tabla_ratios`: Tabla de ratios (cifrado, descifrado y total) calculados a partir del benchmark de 10 experimentos.
-*   **100 Experimentos:**
-    *   `SigncryptionBenchmarks100`: Tabla con las métricas del benchmark de 100 experimentos.
-    *   `tabla_ratios100`: Tabla de ratios (cifrado, descifrado y total) calculados a partir del benchmark de 100 experimentos.
-*   **500 Experimentos:**
-    *   `SigncryptionBenchmarks500`: Tabla con las métricas del benchmark de 500 experimentos.
-    *   `tabla_ratios500`: Tabla de ratios (cifrado, descifrado y total) calculados a partir del benchmark de 500 experimentos.
+Todos los archivos de resultados se encuentran en la carpeta `Tablas/`. Se incluyen los datos de los benchmarks, los ratios de rendimiento y los análisis comparativos de las curvas elípticas.
 
-### 2. Análisis Comparativo (Edwards vs. Weierstrass)
+#### 1.1. Tablas de benchmarks y ratios
 
-Adicionalmente, se incluyen tablas especializadas para analizar el comportamiento y rendimiento de las curvas de Edwards frente a las curvas de Weierstrass bajo configuraciones específicas:
+Los experimentos se realizaron considerando tres cantidades de repeticiones: 10, 100 y 500. Para cada escenario se incluye una tabla con los tiempos de ejecución y otra con los ratios de rendimiento correspondientes al cifrado, descifrado y tiempo total.
 
-*   `AnalisisVictoriasEdwards`: Tabla donde se calculan los ratios \(r_G\) para las tríadas y cuádruplas en los escenarios donde la implementación de **Edwards** resulta más eficiente (gana Edwards).
-*   `AnalisisDerrotasEdwards`: Tabla donde se calculan los ratios \(r_G\) para las tríadas y cuádruplas en los escenarios donde la implementación de **Weierstrass** resulta más eficiente (pierde Edwards).
+- **10 experimentos**
+  - `SigncryptionBenchmarks.xlsx`: resultados de los tiempos de ejecución correspondientes a 10 experimentos.
+  - `tabla_ratios.xlsx`: ratios de cifrado, descifrado y tiempo total calculados a partir de los resultados anteriores.
+
+- **100 experimentos**
+  - `SigncryptionBenchmarks100.xlsx`: resultados de los tiempos de ejecución correspondientes a 100 experimentos.
+  - `tabla_ratios100.xlsx`: ratios de cifrado, descifrado y tiempo total correspondientes a este escenario.
+
+- **500 experimentos**
+  - `SigncryptionBenchmarks500.xlsx`: resultados de los tiempos de ejecución correspondientes a 500 experimentos.
+  - `tabla_ratios500.xlsx`: ratios de cifrado, descifrado y tiempo total correspondientes a este escenario.
+
+#### 1.2. Análisis comparativo de curvas elípticas
+
+También se incluyen dos archivos con el análisis de los índices \(r_G\) para las curvas de Edwards y Weierstrass:
+
+- `AnalisisVictoriasEdwards.xlsx`: contiene los resultados de los casos en los que el índice \(r_G\) de Edwards es mayor que el de Weierstrass, de acuerdo con el criterio utilizado en el análisis.
+- `AnalisisDerrotasEdwards.xlsx`: contiene los resultados de los casos en los que el índice \(r_G\) de Edwards es menor que el de Weierstrass.
+
+Estos archivos permiten examinar y comparar los índices calculados para las curvas consideradas en el estudio.
+
+### 2. Módulos de Python
+
+Los siguientes archivos `.py` contienen las implementaciones de los algoritmos criptográficos y los procedimientos utilizados en los experimentos.
+
+| Archivo | Descripción |
+|---|---|
+| `CurvasElipticasCamposFinitos.py` | Implementa las operaciones aritméticas de curvas elípticas en forma de Weierstrass sobre campos finitos, mediante las clases correspondientes para las curvas y sus puntos. |
+| `CurvasDeEdwars.py` | Implementa las operaciones de las curvas elípticas en forma de Edwards sobre campos finitos, incluyendo las clases para las curvas y sus puntos. |
+| `DSA.py` | Implementa el algoritmo de firma digital DSA (*Digital Signature Algorithm*). |
+| `ECDH.py` | Implementa el protocolo de intercambio de claves ECDH (*Elliptic-Curve Diffie–Hellman*) sobre curvas elípticas. |
+| `ECDSA.py` | Implementa el algoritmo de firma digital ECDSA (*Elliptic Curve Digital Signature Algorithm*). |
+| `EdDH.py` | Implementa una adaptación del protocolo de intercambio de claves Diffie–Hellman a curvas de Edwards. |
+| `EdDSA.py` | Implementa una adaptación del algoritmo de firma digital DSA a curvas de Edwards. |
+| `UtilidadesPropuestas.py` | Contiene funciones y procedimientos auxiliares utilizados en las implementaciones propuestas. |
+| `PropuestaWeierstrass.py` | Implementa el esquema de signcryption propuesto, adaptado a curvas elípticas en forma de Weierstrass. |
+| `PropuestaEdwards.py` | Implementa el esquema de signcryption propuesto, adaptado a curvas elípticas en forma de Edwards. |
+| `benchmark.py` | Ejecuta los experimentos de rendimiento para medir los tiempos de signcryption y unsigncryption de las implementaciones consideradas. |
+| `CalcularRatios.py` | Calcula los ratios de cifrado, descifrado y tiempo total utilizados en el análisis presentado en la tesis. |
+| `AnalisisDerrotasEdwards.py` | Calcula los índices \(r_G\) para los casos identificados como derrotas de Edwards frente a Weierstrass y genera la tabla de resultados correspondiente. |
+| `AnalisisVictoriasEdwards.py` | Calcula los índices \(r_G\) para los casos identificados como victorias de Edwards frente a Weierstrass y genera la tabla de resultados correspondiente. |
+
+### 3. Requisitos
+
+Para ejecutar los programas se requiere:
+
+- Python 3.
+- La biblioteca `openpyxl`, utilizada para crear y guardar archivos de Excel.
+- Los módulos y archivos de datos necesarios para cada ejecución.
+
+Instala la dependencia principal mediante:
+
+```bash
+pip install openpyxl
+```
+
+Los módulos estándar de Python utilizados por los programas, como `time`, `os`, `random` y `multiprocessing`, no requieren una instalación adicional.
+
+### 4. Organización y ejecución del código
+
+Los archivos `.py` deben mantenerse en el mismo directorio, ya que algunos módulos importan clases y funciones definidas en otros archivos del repositorio. Si se cambia su ubicación sin actualizar las importaciones, pueden producirse errores al ejecutar los programas.
+
+La carpeta `Tablas/` contiene los archivos Excel generados o utilizados por los análisis. Cuando un programa requiera leer o guardar archivos en esta carpeta, debe utilizar la ruta correspondiente a su ubicación.
+
+Para ejecutar un programa, abre una terminal en el directorio del repositorio y utiliza, por ejemplo:
+
+```bash
+python benchmark.py
+```
+
+Los demás programas pueden ejecutarse de forma análoga, según el análisis que se desee realizar. Los archivos de análisis requieren que estén disponibles los datos de entrada correspondientes.
+
+**Nota:** los nombres de los archivos, las rutas de entrada y salida y las dependencias deben coincidir con la configuración utilizada en cada script.
