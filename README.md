@@ -4,7 +4,7 @@ Este repositorio contiene la implementación de los algoritmos criptográficos u
 
 ## Contenido del repositorio
 
-El repositorio se organiza en dos componentes principales: los módulos de Python (`.py`), que implementan las operaciones criptográficas y los procedimientos experimentales, y la carpeta `Tablas`, que contiene los archivos con los resultados generados durante los experimentos.
+El repositorio se organiza en dos componentes principales: los módulos de Python (`.py`), que implementan las operaciones criptográficas y los procedimientos experimentales, y las tablas, que contienen  los resultados generados durante los experimentos.
 
 ## 1. Tablas de resultados
 
